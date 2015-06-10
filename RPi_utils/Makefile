@@ -1,3 +1,5 @@
+prefix=/usr/local/bin
+
 all: send codesend RFSniffer
 
 send: RCSwitch.o send.o
@@ -12,3 +14,11 @@ RFSniffer: RCSwitch.o RFSniffer.o
 
 clean:
 	$(RM) *.o send codesend servo RFSniffer
+
+install: all
+	cp RFSniffer send codesend $(prefix)
+
+uninstall:
+	rm $(prefix)/RFSniffer
+	rm $(prefix)/send
+	rm $(prefix)/codesend
