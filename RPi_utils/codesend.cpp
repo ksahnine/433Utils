@@ -22,7 +22,10 @@ int main(int argc, char *argv[]) {
     // Consult https://projects.drogon.net/raspberry-pi/wiringpi/pins/
     // for more information.
     int PIN = 0;
-    
+    char* pinEnv = getenv("SEND_PIN");
+    if ( pinEnv != NULL )
+        PIN = atoi(pinEnv);
+
     // Parse the firt parameter to this command as an integer
     int code = atoi(argv[1]);
     
